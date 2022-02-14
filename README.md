@@ -12,10 +12,13 @@ rm thanos-${TARGET_VERSION}.tgz
 ## Install/upgrade
 ```
 cd thanos
+mkdir /tmp/thanos-0
+chmod o+rwx /tmp/thanos-0/
+kubectl apply -f demo-persistence.yaml
 helm upgrade -i th .
 ```
 
 ## Set up port-forwarding
 ```
-kubectl port-forward svc/th-thanos-query-frontend 30000:9090
+kubectl port-forward svc/thanos-query-frontend 30000:9090
 ```
